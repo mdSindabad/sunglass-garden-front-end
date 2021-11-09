@@ -1,8 +1,10 @@
 import React from "react";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <Header />
       <h1>Sunglass Garden</h1>
     </div>
   );
