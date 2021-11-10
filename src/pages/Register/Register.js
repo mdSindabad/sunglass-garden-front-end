@@ -10,14 +10,15 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Button } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
-import './login.css';
+import './register.css';
 
-const Login = () => {
+const Register = () => {
     // router hook
     const history = useHistory();
 
     //local state
     const [values, setValues] = React.useState({
+        name: '',
         email: '',
         password: ''
     });
@@ -42,8 +43,18 @@ const Login = () => {
 
     return (
         <Box>
-            <h2>Login</h2>
+            <h2>Register</h2>
             <form onSubmit={handleSubmit}>
+                <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-name"
+                        type='text'
+                        value={values.email}
+                        onChange={handleChange('name')}
+                        label="name"
+                    />
+                </FormControl>
                 <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
                     <OutlinedInput
@@ -76,13 +87,12 @@ const Login = () => {
                         label="Password"
                     />
                 </FormControl>
-                <Button color="secondary" className="button" fullWidth type="submit" variant="contained">Login</Button>
-                <Button className="button" fullWidth type="submit" variant="contained" startIcon={<GoogleIcon style={{ color: "#f4c20d" }} />}>Google</Button>
-                <p style={{ color: "gray", textAlign: "center", margin: "10px 0 0 0" }}>New to SunglassGarden?</p>
-                <Button className="button" fullWidth type="submit" variant="outlined" onClick={() => history.push('/register')}>Register</Button>
+                <Button color="secondary" className="button" fullWidth type="submit" variant="contained">Register</Button>
+                <p style={{ color: "gray", textAlign: "center", margin: "10px 0 0 0" }}>Already have Account?</p>
+                <Button className="button" fullWidth type="submit" variant="outlined" onClick={() => history.push('/login')}>Login</Button>
             </form>
         </Box>
     );
 }
 
-export default Login;
+export default Register;

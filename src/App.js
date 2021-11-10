@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Login from "./pages/Login/Login";
 import Products from "./pages/Products/Products";
 import Dashboard from "./pages/Dashboadr/Dashboard";
+import Register from "./pages/Register/Register";
 
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path='/login'>
           <Login />
+        </Route>
+        <Route path='/register'>
+          <Register />
         </Route>
         <Route path='*'>
           <NotFound />
