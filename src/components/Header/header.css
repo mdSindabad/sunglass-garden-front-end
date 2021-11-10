@@ -2,6 +2,16 @@ a {
     text-decoration: none;
     color: #fff;
 }
+.desktop-menu a {
+    margin-right: 5px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.03s ease-in-out;
+}
+.desktop-menu a:hover{
+    background-color: #1769aa;
+}
 span{
     color: rgb(0, 255, 0);
     font-size: 24px;
