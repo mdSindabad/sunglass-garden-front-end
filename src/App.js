@@ -8,6 +8,7 @@ import Products from "./pages/Products/Products";
 import Dashboard from "./pages/Dashboadr/Dashboard";
 import Register from "./pages/Register/Register";
 import AuthProvider from "./contexts/AuthProvider";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
           <Route path='/products'>
             <Products />
           </Route>
-          <Route path='/dashboard'>
+          <PrivateRoute path='/dashboard'>
             <Dashboard />
-          </Route>
+          </PrivateRoute>
           <Route path='/login'>
             <Login />
           </Route>
