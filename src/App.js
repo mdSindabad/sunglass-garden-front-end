@@ -7,33 +7,35 @@ import Login from "./pages/Login/Login";
 import Products from "./pages/Products/Products";
 import Dashboard from "./pages/Dashboadr/Dashboard";
 import Register from "./pages/Register/Register";
-
+import AuthProvider from "./contexts/AuthProvider";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='/products'>
-          <Products />
-        </Route>
-        <Route path='/dashboard'>
-          <Dashboard />
-        </Route>
-        <Route path='/login'>
-          <Login />
-        </Route>
-        <Route path='/register'>
-          <Register />
-        </Route>
-        <Route path='*'>
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='/products'>
+            <Products />
+          </Route>
+          <Route path='/dashboard'>
+            <Dashboard />
+          </Route>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/register'>
+            <Register />
+          </Route>
+          <Route path='*'>
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 

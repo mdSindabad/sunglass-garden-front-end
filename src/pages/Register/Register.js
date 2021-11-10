@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useHistory } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -8,20 +8,26 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { Button } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
+import { Alert, Button, CircularProgress } from '@mui/material';
 import './register.css';
+import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
     // router hook
+    const location = useLocation();
     const history = useHistory();
+    const path = location.state?.from || '/';
+
+    // auth contect
+    const { user, registerWithEmail } = useAuth();
 
     //local state
-    const [values, setValues] = React.useState({
+    const [values, setValues] = useState({
         name: '',
         email: '',
         password: ''
     });
+    const [error, setError] = useState('');
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -37,9 +43,23 @@ const Register = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = (e) => {
+        setError('');
+        e.preventDefault();
+        const { name, email, password } = values;
+        if (!name || !email || !password) {
+            return
+        } else {
+            const res = registerWithEmail(name, email, password);
+            console.log(res);
+        }
     };
+
+    useEffect(() => {
+        if (user.email) {
+            history.push(path);
+        }
+    }, [user])
 
     return (
         <Box>
@@ -50,7 +70,7 @@ const Register = () => {
                     <OutlinedInput
                         id="outlined-adornment-name"
                         type='text'
-                        value={values.email}
+                        value={values.name}
                         onChange={handleChange('name')}
                         label="name"
                     />
@@ -87,11 +107,15 @@ const Register = () => {
                         label="Password"
                     />
                 </FormControl>
+                {
+                    error && <Alert style={{ margin: "0 0 0 8px" }} severity="error"> {error} </Alert>
+
+                }
                 <Button color="secondary" className="button" fullWidth type="submit" variant="contained">Register</Button>
                 <p style={{ color: "gray", textAlign: "center", margin: "10px 0 0 0" }}>Already have Account?</p>
                 <Button className="button" fullWidth type="submit" variant="outlined" onClick={() => history.push('/login')}>Login</Button>
             </form>
-        </Box>
+        </Box >
     );
 }
 

@@ -1,13 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router';
 import Menu from '@mui/material/Menu';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
+import useAuth from '../../hooks/useAuth';
+import './user.css';
 
 const User = () => {
-    // router hook
-    const history = useHistory();
+    // auth contect
+    const { user, logOut } = useAuth();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -15,9 +16,8 @@ const User = () => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = (path) => {
+    const handleClose = () => {
         setAnchorEl(null);
-        history.push(path)
     };
 
     return (
@@ -30,7 +30,10 @@ const User = () => {
                 onClick={handleMenu}
                 color="inherit"
             >
-                <AccountCircle />
+                {
+                    user?.photoURL ? <img className='userImage' src={user?.photoURL} alt={user?.displayName?.split(" ")[0]} /> :
+                        <AccountCircle />
+                }
             </IconButton>
             <Menu
                 id="menu-appbar"
@@ -47,7 +50,8 @@ const User = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>LogOut</MenuItem>
+                <MenuItem className="name">{user.displayName}</MenuItem>
+                <MenuItem onClick={() => logOut()}>LogOut</MenuItem>
             </Menu>
         </div>
     )

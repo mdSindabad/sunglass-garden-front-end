@@ -1,0 +1,7 @@
+.userImage {
+    width: 35px;
+    border-radius: 50%;
+}
+.name {
+    text-transform: capitalize;
+}
