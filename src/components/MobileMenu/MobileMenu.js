@@ -5,10 +5,14 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import useAuth from '../../hooks/useAuth';
 
 const MobileMenu = () => {
     // router hook
     const history = useHistory();
+
+    // auth contect
+    const { user } = useAuth();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -52,7 +56,10 @@ const MobileMenu = () => {
                 <MenuItem onClick={() => handleClose('/')}>Home</MenuItem>
                 <MenuItem onClick={() => handleClose('/products')}>Products</MenuItem>
                 <MenuItem onClick={() => handleClose('/dashboard')}>Dashboard</MenuItem>
-                <MenuItem onClick={() => handleClose('/login')}>Login</MenuItem>
+                {
+                    !user?.email &&
+                    <MenuItem onClick={() => handleClose('/login')}>Login</MenuItem>
+                }
             </Menu>
         </div>
     );
