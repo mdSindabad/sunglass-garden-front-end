@@ -22,8 +22,8 @@ const Header = () => {
                     </Typography>
                     <div className="desktop-menu">
                         <Link to="/">Home</Link>
-                        <Link to="/">Products</Link>
-                        <Link to="/">Dashboard</Link>
+                        <Link to="/products">Products</Link>
+                        <Link to="/dashboard">Dashboard</Link>
                         <Link to="/login">Login</Link>
                     </div>
                     {(

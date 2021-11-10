@@ -1,0 +1,14 @@
+.container{
+    text-align: center;
+    width: 80vw;
+    margin: auto;
+}
+.container h1 {
+    color: #b2102f;
+    font-size: 48px;
+}
+@media only screen and (min-width: 768px) {
+    .container{
+        width: 50vw;
+    }
+}

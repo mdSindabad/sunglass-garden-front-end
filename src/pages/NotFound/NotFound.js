@@ -1,12 +1,14 @@
-import React from 'react'
+import { Alert } from '@mui/material';
+import React from 'react';
+import './notfound.css';
 
 const NotFound = () => {
     return (
-        <div>
-            <h1 className="text-danger display-1 fw-bold">404</h1>
-            <p> Oops, sorry we can't find that page! </p>
+        <div className="container">
+            <h1>404</h1>
+            <Alert severity="error"> Oops, sorry we can't find that page! </Alert>
         </div>
     )
 }
 
-export default NotFound
+export default NotFound;

@@ -50,8 +50,8 @@ const MobileMenu = () => {
                 }}
             >
                 <MenuItem onClick={() => handleClose('/')}>Home</MenuItem>
-                <MenuItem onClick={() => handleClose('/')}>Products</MenuItem>
-                <MenuItem onClick={() => handleClose('/')}>Dashboard</MenuItem>
+                <MenuItem onClick={() => handleClose('/products')}>Products</MenuItem>
+                <MenuItem onClick={() => handleClose('/dashboard')}>Dashboard</MenuItem>
                 <MenuItem onClick={() => handleClose('/login')}>Login</MenuItem>
             </Menu>
         </div>
