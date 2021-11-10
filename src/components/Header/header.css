@@ -1,0 +1,22 @@
+a {
+    text-decoration: none;
+    color: #fff;
+}
+span{
+    color: rgb(0, 255, 0);
+    font-size: 24px;
+}
+.mobile-menu{
+    display: block;
+}
+.desktop-menu{
+    display: none;
+}
+@media only screen and (min-width: 768px) {
+    .mobile-menu{
+        display: none;
+    }
+    .desktop-menu{
+        display: block;
+    }
+}

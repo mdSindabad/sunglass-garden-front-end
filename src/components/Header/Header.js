@@ -8,8 +8,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import "./header.css";
+import { Link, useHistory } from 'react-router-dom';
 
 const Header = () => {
+    // router hook
+    const history = useHistory();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -17,26 +21,50 @@ const Header = () => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = () => {
+    const handleClose = (path) => {
         setAnchorEl(null);
+        history.push(path)
     };
 
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Sunglass Garden
+                    <div class="mobile-menu">
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            onClick={handleMenu}
+                            sx={{ mr: 2 }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={() => handleClose('/login')}>Login</MenuItem>
+                        </Menu>
+                    </div>
+                    <Typography as={Link} to="/" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <span>S</span>unglass<span>G</span>arden
                     </Typography>
+                    <div className="desktop-menu">
+                        <Link to="/login">Login</Link>
+                    </div>
                     {auth && (
                         <div>
                             <IconButton
