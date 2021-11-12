@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import axios from "axios";
 import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import initilizeAuthentication from "../firebase/firebase.init";
-import { useHistory } from "react-router";
 
 initilizeAuthentication();
 
@@ -15,7 +16,6 @@ const useFirebase = () => {
 
     // login using google
     const signInWithGoogle = () => {
-        console.log("Clicked...")
         const googleProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleProvider)
     };
@@ -54,7 +54,16 @@ const useFirebase = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
-                setUser(user)
+                const data = {
+                    name: user.displayName || "",
+                    email: user.email,
+                    image: user.photoURL
+                }
+                axios.post("https://whispering-gorge-61124.herokuapp.com/user", data)
+                    .then(res => {
+                        setUser(res.data)
+                    })
+                    .catch(err => console.log(err))
             } else {
                 setUser({})
             }

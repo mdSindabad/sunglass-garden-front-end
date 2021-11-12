@@ -31,7 +31,7 @@ const User = () => {
                 color="inherit"
             >
                 {
-                    user?.photoURL ? <img className='userImage' src={user?.photoURL} alt={user?.displayName?.split(" ")[0]} /> :
+                    user?.image ? <img className='userImage' src={user?.image} alt={user?.displayName?.split(" ")[0]} /> :
                         <AccountCircle />
                 }
             </IconButton>
@@ -50,7 +50,7 @@ const User = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem className="name">{user.displayName}</MenuItem>
+                <MenuItem className="name">{user.name}</MenuItem>
                 <MenuItem onClick={() => logOut()}>LogOut</MenuItem>
             </Menu>
         </div>

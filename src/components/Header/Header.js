@@ -15,6 +15,7 @@ const Header = () => {
 
     // auth contect
     const { user, isLoading } = useAuth();
+    console.log(user)
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -36,7 +37,7 @@ const Header = () => {
                         {
                             !isLoading &&
                             !user?.email &&
-                            <Link className={path === '/' && 'active'} to="/login">Login</Link>
+                            <Link className={path === '/login' && 'active'} to="/login">Login</Link>
                         }
                     </div>
                     {
