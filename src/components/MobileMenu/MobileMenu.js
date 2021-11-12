@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { useHistory } from 'react-router';
-import Button from '@mui/material/Button';
+import { useHistory, useLocation } from 'react-router';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import useAuth from '../../hooks/useAuth';
+import './mobileMenu.css';
 
 const MobileMenu = () => {
     // router hook
     const history = useHistory();
+    const path = useLocation().pathname;
 
     // auth contect
     const { user } = useAuth();
@@ -53,9 +54,12 @@ const MobileMenu = () => {
                     horizontal: 'left',
                 }}
             >
-                <MenuItem onClick={() => handleClose('/')}>Home</MenuItem>
-                <MenuItem onClick={() => handleClose('/products')}>Products</MenuItem>
-                <MenuItem onClick={() => handleClose('/dashboard')}>Dashboard</MenuItem>
+                <MenuItem className={path === '/' && 'active'} onClick={() => handleClose('/')}>Home</MenuItem>
+                <MenuItem className={path === '/products' && 'active'} onClick={() => handleClose('/products')}>Products</MenuItem>
+                {
+                    user?.email &&
+                    <MenuItem className={path === '/dashboard' && 'active'} onClick={() => handleClose('/dashboard')}>Dashboard</MenuItem>
+                }
                 {
                     !user?.email &&
                     <MenuItem onClick={() => handleClose('/login')}>Login</MenuItem>

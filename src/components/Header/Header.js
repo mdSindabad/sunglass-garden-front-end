@@ -4,12 +4,15 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import "./header.css";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import User from '../User/User';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
+    // router hooks
+    const path = useLocation().pathname;
+
     // auth contect
     const { user, isLoading } = useAuth();
 
@@ -24,13 +27,16 @@ const Header = () => {
                         <span>S</span>unglass<span>G</span>arden
                     </Typography>
                     <div className="desktop-menu">
-                        <Link to="/">Home</Link>
-                        <Link to="/products">Products</Link>
-                        <Link to="/dashboard">Dashboard</Link>
+                        <Link className={path === '/' && 'active'} to="/">Home</Link>
+                        <Link className={path === '/products' && 'active'} to="/products">Products</Link>
+                        {
+                            user?.email &&
+                            <Link className={path === '/dashboard' && 'active'} to="/dashboard">Dashboard</Link>
+                        }
                         {
                             !isLoading &&
                             !user?.email &&
-                            <Link to="/login">Login</Link>
+                            <Link className={path === '/' && 'active'} to="/login">Login</Link>
                         }
                     </div>
                     {

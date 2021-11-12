@@ -12,6 +12,9 @@ a {
 .desktop-menu a:hover{
     background-color: #1769aa;
 }
+.active{
+    background-color: #1769aa;
+}
 span{
     color: #b2a429;
     font-size: 32px;
