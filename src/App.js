@@ -9,33 +9,36 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Register from "./pages/Register/Register";
 import AuthProvider from "./contexts/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ProductsProvider from "./contexts/ProductsProvider";
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route path='/products'>
-            <Products />
-          </Route>
-          <PrivateRoute path='/dashboard'>
-            <Dashboard />
-          </PrivateRoute>
-          <Route path='/login'>
-            <Login />
-          </Route>
-          <Route path='/register'>
-            <Register />
-          </Route>
-          <Route path='*'>
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
+      <ProductsProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route path='/products'>
+              <Products />
+            </Route>
+            <PrivateRoute path='/dashboard'>
+              <Dashboard />
+            </PrivateRoute>
+            <Route path='/login'>
+              <Login />
+            </Route>
+            <Route path='/register'>
+              <Register />
+            </Route>
+            <Route path='*'>
+              <NotFound />
+            </Route>
+          </Switch>
+        </Router>
+      </ProductsProvider>
     </AuthProvider>
   );
 }

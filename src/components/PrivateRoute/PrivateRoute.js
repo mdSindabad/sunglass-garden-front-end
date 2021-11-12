@@ -1,4 +1,5 @@
 import { CircularProgress } from '@mui/material';
+import { Box } from '@mui/system';
 import React from 'react';
 import { Redirect, Route } from 'react-router';
 import useAuth from '../../hooks/useAuth';
@@ -8,9 +9,9 @@ const PrivateRoute = ({ children, ...rest }) => {
 
     if (isLoading) {
         return (
-            <div className="d-flex justify-content-center mt-5 pt-4 vh-100">
+            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
                 <CircularProgress />
-            </div>
+            </Box>
         )
     } else {
         return (

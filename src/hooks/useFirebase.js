@@ -62,12 +62,12 @@ const useFirebase = () => {
                 axios.post("https://whispering-gorge-61124.herokuapp.com/user", data)
                     .then(res => {
                         setUser(res.data)
+                        setIsloading(false)
                     })
                     .catch(err => console.log(err))
             } else {
                 setUser({})
             }
-            setIsloading(false)
         });
         return () => unsubscribe
     }, []);

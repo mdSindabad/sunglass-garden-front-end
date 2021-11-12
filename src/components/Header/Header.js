@@ -15,7 +15,6 @@ const Header = () => {
 
     // auth contect
     const { user, isLoading } = useAuth();
-    console.log(user)
 
     return (
         <Box sx={{ flexGrow: 1 }}>
