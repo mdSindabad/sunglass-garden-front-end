@@ -8,7 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { Alert, Button, CircularProgress } from '@mui/material';
+import { Alert, Button } from '@mui/material';
 import './register.css';
 import useAuth from '../../hooks/useAuth';
 

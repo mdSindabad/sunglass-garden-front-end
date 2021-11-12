@@ -10,6 +10,7 @@ import Register from "./pages/Register/Register";
 import AuthProvider from "./contexts/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ProductsProvider from "./contexts/ProductsProvider";
+import Purchase from "./pages/Purchase/Purchase";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <PrivateRoute path='/dashboard'>
               <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path='/purchase/:id'>
+              <Purchase />
             </PrivateRoute>
             <Route path='/login'>
               <Login />

@@ -7,17 +7,25 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import './product.css';
+import { useHistory } from 'react-router';
 
 const Product = ({ data }) => {
     // destructure data
-    const { name, price, image, details } = data;
+    const { _id, name, price, image, details } = data;
+
+    // router hooks
+    const history = useHistory();
+
+    const handleClick = (id) => {
+        history.push(`/purchase/${id}`);
+    };
 
     return (
         <Grid className='card' item xs={12} sm={6} md={4}>
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt={name}
                     height="140"
                     image={image}
                 />
@@ -33,7 +41,7 @@ const Product = ({ data }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button variant="outlined" size="small">Purchase</Button>
+                    <Button onClick={() => handleClick(_id)} variant="outlined" size="small">Purchase</Button>
                 </CardActions>
             </Card>
         </Grid>

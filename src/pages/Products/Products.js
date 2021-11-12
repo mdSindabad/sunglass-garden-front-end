@@ -8,7 +8,6 @@ import Product from '../../components/Product/Product';
 const Products = () => {
     // products context
     const { products, isLoading, error } = useProducts();
-    console.log(products);
 
     return (
         <Container style={{ margin: '15px 0' }}>
