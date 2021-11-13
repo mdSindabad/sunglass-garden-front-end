@@ -34,7 +34,7 @@ export default function Payment({ setUpdate, orders }) {
     const filteredOrders = orders.filter(order => order.payment.status === 'unpaid');
 
     const makePayment = (id) => {
-        axios.put(`https://whispering-gorge-61124.herokuapp.com/order/${id}`)
+        axios.put(`https://whispering-gorge-61124.herokuapp.com/order/payment/${id}`)
             .then(res => setUpdate(true))
             .catch(err => console.log(err));
     };

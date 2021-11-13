@@ -31,10 +31,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-export default function MyOrders({ setUpdate, orders }) {
+export default function ManageOrders({ setUpdate, orders }) {
 
     const cancelOrder = (id) => {
         axios.delete(`https://whispering-gorge-61124.herokuapp.com/order/${id}`)
+            .then(res => setUpdate(true))
+            .catch(err => console.log(err));
+    };
+    const makeDelivery = (id) => {
+        axios.put(`https://whispering-gorge-61124.herokuapp.com/order/delivery/${id}`)
             .then(res => setUpdate(true))
             .catch(err => console.log(err));
     };
@@ -48,6 +53,7 @@ export default function MyOrders({ setUpdate, orders }) {
                         <StyledTableCell align="right">Price ($)</StyledTableCell>
                         <StyledTableCell align="right">Payment Status</StyledTableCell>
                         <StyledTableCell align="right">Delivery Status</StyledTableCell>
+                        <StyledTableCell align="right">Make Delivery</StyledTableCell>
                         <StyledTableCell align="right">Cancel Order</StyledTableCell>
                     </TableRow>
                 </TableHead>
@@ -55,13 +61,19 @@ export default function MyOrders({ setUpdate, orders }) {
                     {orders?.map((row) => (
                         <StyledTableRow key={row._id}>
                             <StyledTableCell component="th" scope="row">
-                                {row.product.name}
+                                <b>{row.product.name}</b>
+                                <p style={{ textTransform: 'capitalize', margin: '5px 0 0 0' }}><b>Ordered By:</b> {row.customer.name}</p>
                             </StyledTableCell>
                             <StyledTableCell align="right">{row.product.price}</StyledTableCell>
                             <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">{row.payment.status}</StyledTableCell>
                             <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">{row.delivery.status}</StyledTableCell>
                             <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">
-                                {row?.payment.status == 'paid' ?
+                                {row?.delivery?.status !== 'pending' || row?.payment?.status !== 'paid' ?
+                                    <Button disabled variant='contained' color="success">Ship</Button> :
+                                    <Button variant='contained' color="success" onClick={() => makeDelivery(row._id)}>Ship</Button>}
+                            </StyledTableCell>
+                            <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">
+                                {row?.payment?.status === 'paid' ?
                                     <Button disabled variant='contained' color="error">Cancel</Button> :
                                     <Button variant='contained' color="error" onClick={() => cancelOrder(row._id)}>Cancel</Button>}
                             </StyledTableCell>

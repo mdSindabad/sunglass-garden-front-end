@@ -40,10 +40,12 @@ const ReviewDetails = ({ orders }) => {
             rating: value
         };
 
-        console.log(data);
-
         axios.post(`https://whispering-gorge-61124.herokuapp.com/review`, data)
-            .then()
+            .then(res => {
+                if (res.data.insertedId) {
+                    history.push('/dashboard/review');
+                }
+            })
             .catch(err => console.log(err));
     };
 

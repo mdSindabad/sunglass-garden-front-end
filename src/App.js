@@ -5,12 +5,12 @@ import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import Login from "./pages/Login/Login";
 import Products from "./pages/Products/Products";
-import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import Register from "./pages/Register/Register";
 import AuthProvider from "./contexts/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ProductsProvider from "./contexts/ProductsProvider";
 import Purchase from "./pages/Purchase/Purchase";
+import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
               <Products />
             </Route>
             <PrivateRoute path='/dashboard'>
-              <UserDashboard />
+              <Dashboard />
             </PrivateRoute>
             <PrivateRoute path='/purchase/:id'>
               <Purchase />

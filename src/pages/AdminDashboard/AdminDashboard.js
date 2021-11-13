@@ -17,21 +17,20 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
-import PaymentIcon from '@mui/icons-material/Payment';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import LogoutIcon from '@mui/icons-material/Logout';
-import MyOrders from '../Dashboard/MyOrders/MyOrders';
-import Payment from '../Dashboard/Payment/Payment';
-import Review from '../Dashboard/Review/Review';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { Alert, CircularProgress } from '@mui/material';
-import ReviewDetails from '../ReviewDetails/ReviewDetails';
 import User from '../../components/User/User';
+import ManageOrders from '../Dashboard/ManageOrders/ManageOrders';
 
 
 const drawerWidth = 240;
 
-function UserDashboard(props) {
+function AdminDashboard(props) {
     // router hook
     const history = useHistory();
     const { path, url } = useRouteMatch();
@@ -49,7 +48,7 @@ function UserDashboard(props) {
         setError('');
         setUpdate(false)
 
-        axios.get(`https://whispering-gorge-61124.herokuapp.com/orders/${user.email}`)
+        axios.get(`https://whispering-gorge-61124.herokuapp.com/orders`)
             .then(res => {
                 setOrders(res.data);
                 setIsloading(false);
@@ -82,19 +81,25 @@ function UserDashboard(props) {
                     <ListItemIcon>
                         <DashboardIcon />
                     </ListItemIcon>
-                    <ListItemText primary="My Orders" />
+                    <ListItemText primary="Manage All Orders" />
                 </ListItem>
-                <ListItem button onClick={() => history.push(`${url}/payment`)}>
+                <ListItem button onClick={() => history.push(`${url}/manage-products`)}>
                     <ListItemIcon>
-                        <PaymentIcon />
+                        <ProductionQuantityLimitsIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Pay" />
+                    <ListItemText primary="Manage All Products" />
                 </ListItem>
-                <ListItem button onClick={() => history.push(`${url}/review`)}>
+                <ListItem button onClick={() => history.push(`${url}/add-product`)}>
                     <ListItemIcon>
-                        <RateReviewIcon />
+                        <AddShoppingCartIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Review" />
+                    <ListItemText primary="Add A Product" />
+                </ListItem>
+                <ListItem button onClick={() => history.push(`${url}/make-admin`)}>
+                    <ListItemIcon>
+                        <AdminPanelSettingsIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Make Admin" />
                 </ListItem>
                 <ListItem button onClick={logOut}>
                     <ListItemIcon>
@@ -129,7 +134,7 @@ function UserDashboard(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Dashboard
+                        Dashboard (Admin)
                     </Typography>
                     <Typography sx={{ ml: 'auto' }} variant="h6" noWrap component="div">
                         <User />
@@ -182,26 +187,27 @@ function UserDashboard(props) {
                         >
                             <h2 style={{ textTransform: 'capitalize' }}>Welcome {user.name}</h2>
                             <Route exact path={path}>
-                                <h3>My Orders</h3>
-                                <MyOrders setUpdate={setUpdate} orders={orders} />
+                                <h3>Manage All Orders</h3>
+                                <ManageOrders orders={orders} setUpdate={setUpdate} />
                             </Route>
-                            <Route exact path={`${path}/payment`}>
-                                <h3>Payment</h3>
-                                <Payment setUpdate={setUpdate} orders={orders} />
+                            <Route exact path={`${path}/manage-products`}>
+                                <h3>Manage All Products</h3>
+
                             </Route>
-                            <Route exact path={`${path}/review`}>
-                                <h3>Review</h3>
-                                <Review orders={orders} />
+                            <Route exact path={`${path}/add-product`}>
+                                <h3>Add A Product</h3>
+
                             </Route>
-                            <Route path={`${path}/review/:id`}>
-                                <ReviewDetails orders={orders} />
+                            <Route exact path={`${path}/make-admin`}>
+                                <h3>Make Admin</h3>
+
                             </Route>
                         </Box>}
         </Box>
     );
 }
 
-UserDashboard.propTypes = {
+AdminDashboard.propTypes = {
     /**
      * Injected by the documentation to work in an iframe.
      * You won't need it on your project.
@@ -209,4 +215,4 @@ UserDashboard.propTypes = {
     window: PropTypes.func,
 };
 
-export default UserDashboard;
+export default AdminDashboard;
