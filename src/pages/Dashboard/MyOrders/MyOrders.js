@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -29,19 +30,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24),
-    createData('Ice cream sandwich', 237, 9.0, 37),
-    createData('Eclair', 262, 16.0, 24),
-    createData('Cupcake', 305, 3.7, 67),
-    createData('Gingerbread', 356, 16.0, 49),
-];
+export default function MyOrders({ setUpdate, orders }) {
 
-export default function MyOrders({ orders }) {
+    const cancelOrder = (id) => {
+        axios.delete(`https://whispering-gorge-61124.herokuapp.com/order/${id}`)
+            .then(res => setUpdate(true))
+            .catch(err => console.log(err));
+    };
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -61,10 +58,12 @@ export default function MyOrders({ orders }) {
                                 {row.product.name}
                             </StyledTableCell>
                             <StyledTableCell align="right">{row.product.price}</StyledTableCell>
-                            <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">{row.status.payment}</StyledTableCell>
-                            <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">{row.status.delivery}</StyledTableCell>
+                            <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">{row.payment.status}</StyledTableCell>
+                            <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">{row.delivery.status}</StyledTableCell>
                             <StyledTableCell style={{ textTransform: 'capitalize' }} align="right">
-                                <Button color="error">Cancel</Button>
+                                {row?.payment.status == 'paid' ?
+                                    <Button disabled variant='contained' color="error">Cancel</Button> :
+                                    <Button variant='contained' color="error" onClick={() => cancelOrder(row._id)}>Cancel</Button>}
                             </StyledTableCell>
                         </StyledTableRow>
                     ))}

@@ -14,7 +14,7 @@ const ProductsProvider = ({ children }) => {
 
     useEffect(() => {
         setError('');
-        setIsloading(true);
+        // setIsloading(true);
         setUpdate(false)
 
         axios.get('https://whispering-gorge-61124.herokuapp.com/products')

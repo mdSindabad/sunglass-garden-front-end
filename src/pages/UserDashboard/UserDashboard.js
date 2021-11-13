@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, useHistory, useRouteMatch } from 'react-router';
+import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -23,8 +24,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import MyOrders from '../Dashboard/MyOrders/MyOrders';
 import Payment from '../Dashboard/Payment/Payment';
 import Review from '../Dashboard/Review/Review';
-import axios from 'axios';
 import { Alert, CircularProgress } from '@mui/material';
+import ReviewDetails from '../ReviewDetails/ReviewDetails';
 
 
 const drawerWidth = 240;
@@ -32,7 +33,7 @@ const drawerWidth = 240;
 function UserDashboard(props) {
     // router hook
     const history = useHistory();
-    let { path, url } = useRouteMatch();
+    const { path, url } = useRouteMatch();
 
     // auth contect
     const { user, logOut } = useAuth();
@@ -43,11 +44,8 @@ function UserDashboard(props) {
     const [error, setError] = useState('');
     const [update, setUpdate] = useState(false);
 
-    console.log(orders)
-
     useEffect(() => {
         setError('');
-        setIsloading(true);
         setUpdate(false)
 
         axios.get(`https://whispering-gorge-61124.herokuapp.com/orders/${user.email}`)
@@ -180,13 +178,18 @@ function UserDashboard(props) {
                         >
                             <Route exact path={path}>
                                 <h3>My Orders</h3>
-                                <MyOrders orders={orders} />
+                                <MyOrders setUpdate={setUpdate} orders={orders} />
                             </Route>
                             <Route exact path={`${path}/payment`}>
-                                <Payment />
+                                <h3>Payment</h3>
+                                <Payment setUpdate={setUpdate} orders={orders} />
                             </Route>
-                            <Route path={`${path}/review`}>
-                                <Review />
+                            <Route exact path={`${path}/review`}>
+                                <h3>Review</h3>
+                                <Review orders={orders} />
+                            </Route>
+                            <Route path={`${path}/review/:id`}>
+                                <ReviewDetails orders={orders} />
                             </Route>
                         </Box>}
         </Box>
