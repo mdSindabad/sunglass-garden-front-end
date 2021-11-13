@@ -26,6 +26,7 @@ import Payment from '../Dashboard/Payment/Payment';
 import Review from '../Dashboard/Review/Review';
 import { Alert, CircularProgress } from '@mui/material';
 import ReviewDetails from '../ReviewDetails/ReviewDetails';
+import User from '../../components/User/User';
 
 
 const drawerWidth = 240;
@@ -130,6 +131,9 @@ function UserDashboard(props) {
                     <Typography variant="h6" noWrap component="div">
                         Dashboard
                     </Typography>
+                    <Typography sx={{ ml: 'auto' }} variant="h6" noWrap component="div">
+                        <User />
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Box
@@ -176,6 +180,7 @@ function UserDashboard(props) {
                             sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
                             style={{ overflow: 'scroll' }}
                         >
+                            <h2 style={{ textTransform: 'capitalize' }}>Welcome {user.name}</h2>
                             <Route exact path={path}>
                                 <h3>My Orders</h3>
                                 <MyOrders setUpdate={setUpdate} orders={orders} />

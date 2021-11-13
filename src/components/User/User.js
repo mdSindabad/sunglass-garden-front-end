@@ -51,7 +51,7 @@ const User = () => {
                 onClose={handleClose}
             >
                 <MenuItem className="name">{user.name}</MenuItem>
-                <MenuItem onClick={() => logOut()}>LogOut</MenuItem>
+                <MenuItem onClick={() => logOut()}>Logout</MenuItem>
             </Menu>
         </div>
     )
