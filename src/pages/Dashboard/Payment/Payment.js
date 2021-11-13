@@ -34,9 +34,14 @@ export default function Payment({ setUpdate, orders }) {
     const filteredOrders = orders.filter(order => order.payment.status === 'unpaid');
 
     const makePayment = (id) => {
-        axios.put(`https://whispering-gorge-61124.herokuapp.com/order/payment/${id}`)
-            .then(res => setUpdate(true))
-            .catch(err => console.log(err));
+        const confirm = window.confirm('Do you want to make the payment?');
+        if (confirm) {
+            axios.put(`https://whispering-gorge-61124.herokuapp.com/order/payment/${id}`)
+                .then(res => setUpdate(true))
+                .catch(err => console.log(err));
+        } else {
+            return
+        }
     };
 
     return (

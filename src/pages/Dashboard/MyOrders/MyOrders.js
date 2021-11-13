@@ -34,9 +34,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function MyOrders({ setUpdate, orders }) {
 
     const cancelOrder = (id) => {
-        axios.delete(`https://whispering-gorge-61124.herokuapp.com/order/${id}`)
-            .then(res => setUpdate(true))
-            .catch(err => console.log(err));
+        const confirm = window.confirm('Do you want to cancel the order?');
+        if (confirm) {
+            axios.delete(`https://whispering-gorge-61124.herokuapp.com/order/${id}`)
+                .then(res => setUpdate(true))
+                .catch(err => console.log(err));
+        } else {
+            return
+        }
     };
 
     return (

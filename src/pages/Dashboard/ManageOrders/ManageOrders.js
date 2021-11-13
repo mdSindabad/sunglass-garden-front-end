@@ -34,14 +34,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function ManageOrders({ setUpdate, orders }) {
 
     const cancelOrder = (id) => {
-        axios.delete(`https://whispering-gorge-61124.herokuapp.com/order/${id}`)
-            .then(res => setUpdate(true))
-            .catch(err => console.log(err));
+        const confirm = window.confirm('Do you want to cancel the order?');
+        if (confirm) {
+            axios.delete(`https://whispering-gorge-61124.herokuapp.com/order/${id}`)
+                .then(res => setUpdate(true))
+                .catch(err => console.log(err));
+        } else {
+            return
+        }
     };
     const makeDelivery = (id) => {
-        axios.put(`https://whispering-gorge-61124.herokuapp.com/order/delivery/${id}`)
-            .then(res => setUpdate(true))
-            .catch(err => console.log(err));
+        const confirm = window.confirm('Do you want to make the delivery?');
+        if (confirm) {
+            axios.put(`https://whispering-gorge-61124.herokuapp.com/order/delivery/${id}`)
+                .then(res => setUpdate(true))
+                .catch(err => console.log(err));
+        } else {
+            return
+        }
     };
 
     return (
