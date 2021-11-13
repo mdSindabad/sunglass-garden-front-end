@@ -34,7 +34,7 @@ const Product = ({ data }) => {
                         {name.slice(0, 15)}...
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        <p><b>Lenses Optical Attribute: </b>{details.optics}</p>
+                        <p><b>Optics: </b>{details.optics}</p>
                         <p><b>Lens Height: </b>{details.height}</p>
                         <p><b>Lens Width: </b>{details.width}</p>
                         <p><b>Lenses Material: </b>{details.material}</p>

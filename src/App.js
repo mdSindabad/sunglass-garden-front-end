@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import Login from "./pages/Login/Login";
 import Products from "./pages/Products/Products";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import Register from "./pages/Register/Register";
 import AuthProvider from "./contexts/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
@@ -26,7 +26,7 @@ function App() {
               <Products />
             </Route>
             <PrivateRoute path='/dashboard'>
-              <Dashboard />
+              <UserDashboard />
             </PrivateRoute>
             <PrivateRoute path='/purchase/:id'>
               <Purchase />

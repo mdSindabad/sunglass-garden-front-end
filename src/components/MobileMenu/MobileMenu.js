@@ -58,7 +58,7 @@ const MobileMenu = () => {
                 <MenuItem className={path === '/products' && 'active'} onClick={() => handleClose('/products')}>Products</MenuItem>
                 {
                     user?.email &&
-                    <MenuItem className={path === '/dashboard' && 'active'} onClick={() => handleClose('/dashboard')}>Dashboard</MenuItem>
+                    <MenuItem className={path === '/dashboard' && 'active'} onClick={() => handleClose('/dashboard')}>dashboard</MenuItem>
                 }
                 {
                     !user?.email &&

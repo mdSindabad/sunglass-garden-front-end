@@ -18,7 +18,7 @@ const OrderForm = ({ handleSubmit, values, setValues }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+            <FormControl fullWidth sx={{ mt: 1 }} variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-name"
@@ -28,7 +28,7 @@ const OrderForm = ({ handleSubmit, values, setValues }) => {
                     label="name"
                 />
             </FormControl>
-            <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+            <FormControl fullWidth sx={{ mt: 1 }} variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-email"
@@ -38,7 +38,7 @@ const OrderForm = ({ handleSubmit, values, setValues }) => {
                     label="email"
                 />
             </FormControl>
-            <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+            <FormControl fullWidth sx={{ mt: 1 }} variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-address">Address</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-address"
@@ -48,7 +48,7 @@ const OrderForm = ({ handleSubmit, values, setValues }) => {
                     label="address"
                 />
             </FormControl>
-            <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+            <FormControl fullWidth sx={{ mt: 1 }} variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-phone">Phone Number</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-phone"
@@ -58,7 +58,7 @@ const OrderForm = ({ handleSubmit, values, setValues }) => {
                     label="phone"
                 />
             </FormControl>
-            <Button color="success" fullWidth type="submit" variant="contained">Place Order</Button>
+            <Button color="success" sx={{ mt: 1 }} fullWidth type="submit" variant="contained">Place Order</Button>
         </form>
     )
 }

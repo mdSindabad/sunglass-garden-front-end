@@ -64,10 +64,15 @@ const useFirebase = () => {
                         setUser(res.data)
                     })
                     .catch(err => console.log(err))
+                    .finally(() => {
+                        setIsloading(false)
+                    })
             } else {
                 setUser({})
             }
-            setIsloading(false)
+            setTimeout(() => {
+                setIsloading(false)
+            }, 3000)
         });
         return () => unsubscribe
     }, []);

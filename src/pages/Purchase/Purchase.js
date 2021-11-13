@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useParams } from 'react-router';
-import { Alert, CircularProgress, Container } from '@mui/material';
+import { Alert, CircularProgress, Container, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import PurchaseProduct from '../../components/PurchaseProduct/PurchaseProduct';
 import OrderForm from '../../components/OrderForm/OrderForm';
@@ -74,14 +74,18 @@ const Purchase = () => {
                     </Box> :
                         <>
                             <h1>Purchase</h1>
-                            <Box>
-                                <PurchaseProduct product={product} />
-                                <h3 style={{ textAlign: 'center', margin: '20px 0 0 0' }}>Address and Phone number</h3>
-                                <OrderForm values={values} setValues={setValues} handleSubmit={handleSubmit} />
-                            </Box>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} md={5}>
+                                    <PurchaseProduct product={product} />
+                                </Grid>
+                                <Grid item xs={12} md={7}>
+                                    <h3 style={{ textAlign: 'center' }}>Address and Phone number</h3>
+                                    <OrderForm values={values} setValues={setValues} handleSubmit={handleSubmit} />
+                                </Grid>
+                            </Grid>
                         </>
             }
-        </Container>
+        </Container >
     )
 }
 
