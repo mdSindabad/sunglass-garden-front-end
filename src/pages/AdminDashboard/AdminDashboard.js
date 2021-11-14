@@ -29,6 +29,7 @@ import ManageOrders from '../Dashboard/ManageOrders/ManageOrders';
 import ManageProducts from '../Dashboard/ManageProducts/ManageProducts';
 import AddProduct from '../Dashboard/AddProduct/AddProduct';
 import UpdateProduct from '../Dashboard/UpdateProduct/UpdateProduct';
+import MakeAdmin from '../Dashboard/MakeAdmin/MakeAdmin';
 
 
 const drawerWidth = 240;
@@ -203,7 +204,7 @@ function AdminDashboard(props) {
                             </Route>
                             <Route exact path={`${path}/make-admin`}>
                                 <h3>Make Admin</h3>
-
+                                <MakeAdmin />
                             </Route>
                             <Route exact path={`${path}/manage-products/update/:id`}>
                                 <h3>Update Product</h3>

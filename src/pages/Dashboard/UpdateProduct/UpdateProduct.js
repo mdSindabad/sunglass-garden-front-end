@@ -46,7 +46,7 @@ const UpdateProduct = () => {
             setError('Please fill up all the fields')
             return
         } else {
-            axios.put(`http://localhost:5000/product/update/${params.id}`, values)
+            axios.put(`https://whispering-gorge-61124.herokuapp.com/product/update/${params.id}`, values)
                 .then(res => {
                     if (res.data.acknowledged) {
                         setUpdate(true);
