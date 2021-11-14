@@ -27,6 +27,7 @@ import { Alert, CircularProgress } from '@mui/material';
 import User from '../../components/User/User';
 import ManageOrders from '../Dashboard/ManageOrders/ManageOrders';
 import ManageProducts from '../Dashboard/ManageProducts/ManageProducts';
+import AddProduct from '../Dashboard/AddProduct/AddProduct';
 
 
 const drawerWidth = 240;
@@ -197,7 +198,7 @@ function AdminDashboard(props) {
                             </Route>
                             <Route exact path={`${path}/add-product`}>
                                 <h3>Add A Product</h3>
-
+                                <AddProduct />
                             </Route>
                             <Route exact path={`${path}/make-admin`}>
                                 <h3>Make Admin</h3>

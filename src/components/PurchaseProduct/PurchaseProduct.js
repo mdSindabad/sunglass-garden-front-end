@@ -32,14 +32,14 @@ const PurchaseProduct = ({ product }) => {
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                             <Typography component="div" variant="h5">
-                                <p>{name}</p>
+                                <p style={{ textTransform: 'uppercase' }}>{name}</p>
                             </Typography>
                             <Typography variant="subtitle1" color="text.secondary" component="div">
                                 <p>$ {price}</p>
-                                <p><b>Lenses Optical Attribute: </b>{details.optics}</p>
-                                <p><b>Lens Height: </b>{details.height}</p>
-                                <p><b>Lens Width: </b>{details.width}</p>
-                                <p><b>Lenses Material: </b>{details.material}</p>
+                                <p><b>Lenses Optical Attribute: </b>{details?.optics}</p>
+                                <p><b>Lens Height: </b>{details?.height}</p>
+                                <p><b>Lens Width: </b>{details?.width}</p>
+                                <p><b>Lenses Material: </b>{details?.material}</p>
                             </Typography>
                             <Box>
                                 <Button onClick={() => history.replace('/products')} style={{ margin: '5px' }} color="error" variant="contained" >Cancel</Button>

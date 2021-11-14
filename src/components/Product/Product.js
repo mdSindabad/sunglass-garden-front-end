@@ -30,14 +30,14 @@ const Product = ({ data }) => {
                     image={image}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography gutterBottom variant="h5" style={{ textTransform: 'uppercase' }} component="div">
                         {name.slice(0, 15)}...
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        <p><b>Optics: </b>{details.optics}</p>
-                        <p><b>Lens Height: </b>{details.height}</p>
-                        <p><b>Lens Width: </b>{details.width}</p>
-                        <p><b>Lenses Material: </b>{details.material}</p>
+                        <p><b>Optics: </b>{details?.optics}</p>
+                        <p><b>Lens Height: </b>{details?.height}</p>
+                        <p><b>Lens Width: </b>{details?.width}</p>
+                        <p><b>Lenses Material: </b>{details?.material}</p>
                     </Typography>
                 </CardContent>
                 <CardActions>

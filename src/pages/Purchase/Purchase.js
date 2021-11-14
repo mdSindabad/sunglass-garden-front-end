@@ -48,7 +48,7 @@ const Purchase = () => {
                         history.replace('/products')
                     }
                 })
-                .catch(err => console.log(err))
+                .catch(err => console.log(err.message))
         }
     };
 

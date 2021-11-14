@@ -70,7 +70,7 @@ export default function ManageProducts() {
                             <StyledTableCell component="th" scope="row">
                                 <img style={{ width: '100px' }} src={product.image} alt={product.name} />
                             </StyledTableCell>
-                            <StyledTableCell component="th" scope="row">
+                            <StyledTableCell style={{ textTransform: 'uppercase' }} component="th" scope="row">
                                 <b>{product.name}</b>
                             </StyledTableCell>
                             <StyledTableCell align="right">{product.price}</StyledTableCell>
