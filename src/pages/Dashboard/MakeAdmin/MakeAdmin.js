@@ -40,7 +40,7 @@ export default function MakeAdmin() {
     const makeAdmin = (id) => {
         const confirm = window.confirm('Do you want to make this user "Admin"?');
         if (confirm) {
-            axios.put(`http://localhost:5000/user/update-role`, { id: id })
+            axios.put(`https://whispering-gorge-61124.herokuapp.com/user/update-role`, { id: id })
                 .then(res => {
                     if (res.data.acknowledged) {
                         setUpdate(true);
@@ -54,7 +54,7 @@ export default function MakeAdmin() {
 
     useEffect(() => {
         setUpdate(false);
-        axios.get('http://localhost:5000/users')
+        axios.get('https://whispering-gorge-61124.herokuapp.com/users')
             .then(res => setUsers(res.data))
             .catch(err => console.log(err))
     }, [update]);
