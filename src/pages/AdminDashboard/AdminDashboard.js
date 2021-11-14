@@ -26,6 +26,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { Alert, CircularProgress } from '@mui/material';
 import User from '../../components/User/User';
 import ManageOrders from '../Dashboard/ManageOrders/ManageOrders';
+import ManageProducts from '../Dashboard/ManageProducts/ManageProducts';
 
 
 const drawerWidth = 240;
@@ -192,7 +193,7 @@ function AdminDashboard(props) {
                             </Route>
                             <Route exact path={`${path}/manage-products`}>
                                 <h3>Manage All Products</h3>
-
+                                <ManageProducts />
                             </Route>
                             <Route exact path={`${path}/add-product`}>
                                 <h3>Add A Product</h3>
@@ -200,6 +201,10 @@ function AdminDashboard(props) {
                             </Route>
                             <Route exact path={`${path}/make-admin`}>
                                 <h3>Make Admin</h3>
+
+                            </Route>
+                            <Route exact path={`${path}/manage-products/update/:id`}>
+                                <h3>Update Product</h3>
 
                             </Route>
                         </Box>}
