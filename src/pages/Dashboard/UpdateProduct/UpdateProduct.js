@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -12,22 +12,26 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Alert, Button } from '@mui/material';
 import useProducts from '../../../hooks/useProducts';
 
-const AddProduct = () => {
+const UpdateProduct = () => {
     // router hook
     const history = useHistory();
+    const params = useParams();
+
 
     // products contect
-    const { setUpdate } = useProducts();
+    const { products, setUpdate } = useProducts();
+
+    const product = products.filter(prod => prod._id === params.id)[0];
 
     //local state
     const [values, setValues] = useState({
-        name: '',
-        image: '',
-        price: '',
-        optics: '',
-        height: '',
-        width: '',
-        material: ''
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        optics: product.details.optics,
+        height: product.details.height,
+        width: product.details.width,
+        material: product.details.material
     });
     const [error, setError] = useState('');
 
@@ -42,9 +46,9 @@ const AddProduct = () => {
             setError('Please fill up all the fields')
             return
         } else {
-            axios.post('https://whispering-gorge-61124.herokuapp.com/product', values)
+            axios.put(`http://localhost:5000/product/update/${params.id}`, values)
                 .then(res => {
-                    if (res.data.insertedId) {
+                    if (res.data.acknowledged) {
                         setUpdate(true);
                         history.replace('/dashboard/manage-products');
                     }
@@ -130,10 +134,10 @@ const AddProduct = () => {
                     error && <Alert style={{ margin: "0 0 0 8px" }} severity="error"> {error} </Alert>
 
                 }
-                <Button className="button" fullWidth type="submit" variant="outlined" onClick={handleSubmit}>Add</Button>
+                <Button className="button" fullWidth type="submit" variant="outlined">Update</Button>
             </form>
         </Box >
     );
 }
 
-export default AddProduct;
+export default UpdateProduct;

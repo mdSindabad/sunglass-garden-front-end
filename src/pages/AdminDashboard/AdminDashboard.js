@@ -28,6 +28,7 @@ import User from '../../components/User/User';
 import ManageOrders from '../Dashboard/ManageOrders/ManageOrders';
 import ManageProducts from '../Dashboard/ManageProducts/ManageProducts';
 import AddProduct from '../Dashboard/AddProduct/AddProduct';
+import UpdateProduct from '../Dashboard/UpdateProduct/UpdateProduct';
 
 
 const drawerWidth = 240;
@@ -206,7 +207,7 @@ function AdminDashboard(props) {
                             </Route>
                             <Route exact path={`${path}/manage-products/update/:id`}>
                                 <h3>Update Product</h3>
-
+                                <UpdateProduct />
                             </Route>
                         </Box>}
         </Box>
