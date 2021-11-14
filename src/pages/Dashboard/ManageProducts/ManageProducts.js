@@ -42,7 +42,7 @@ export default function ManageProducts() {
     const { products, setUpdate } = useProducts();
 
     const deleteProduct = (id) => {
-        const confirm = window.confirm('Do you want to cancel the order?');
+        const confirm = window.confirm('Do you want to delete the product?');
         if (confirm) {
             axios.delete(`https://whispering-gorge-61124.herokuapp.com/product/${id}`)
                 .then(res => {
