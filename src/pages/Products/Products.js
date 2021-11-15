@@ -10,7 +10,7 @@ const Products = () => {
     const { products, isLoading, error } = useProducts();
 
     return (
-        <Container style={{ margin: '15px 0' }}>
+        <Container sx={{ m: '0 auto 20px' }}>
             <h1>Products</h1>
             {
                 isLoading ? <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -19,7 +19,7 @@ const Products = () => {
                     error ? <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Alert severity="error">{error}!</Alert>
                     </Box> :
-                        <Grid sx={{ marginTop: 2 }} container spacing={2} >
+                        <Grid sx={{ m: "2 auto" }} container spacing={2} >
                             {
                                 products?.map(product => {
                                     return <Product data={product} key={product._id} />
