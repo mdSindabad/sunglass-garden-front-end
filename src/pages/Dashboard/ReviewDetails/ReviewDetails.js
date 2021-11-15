@@ -40,6 +40,7 @@ const ReviewDetails = ({ orders }) => {
             product: order.product.name,
             productImage: order.product.image,
             customer: order.customer.name,
+            customerImage: order.customer.image,
             email: order.customer.email,
             customerImage: order.customer.image,
             rating: value,

@@ -13,7 +13,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.233);
+    background-color: rgba(0, 0, 0, 0.411);
 }
 .banner .text {
     position: absolute;
@@ -28,4 +28,19 @@
 .text p {
     font-size: 22px;
     color: #fff;
+}
+@media only screen and (max-width:768px){
+    .banner {
+        height: 98%;
+        overflow: hidden;
+        position: relative;
+    }
+    .banner .text {
+        top: 2%;
+        left: 3%;
+    }
+    .text h1 {
+        font-size: 38px;
+        color: #ab003c;
+    }
 }

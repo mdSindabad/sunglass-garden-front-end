@@ -4,14 +4,17 @@ import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import Product from '../../components/Product/Product';
 import useProducts from '../../hooks/useProducts';
+import ReviewSlider from '../../components/ReviewSlider/ReviewSlider';
 
 const Home = () => {
     // products context
     const { products, isLoading, error } = useProducts();
 
     return (
-        <div>
+        <div style={{ marginBottom: '20px' }}>
+            {/* banner */}
             <Banner />
+            {/* our products */}
             <Container sx={{ m: '0 auto 20px' }}>
                 <h1>Our Products</h1>
                 {
@@ -29,6 +32,8 @@ const Home = () => {
                                 }
                             </Grid>}
             </Container>
+            {/* review */}
+            <ReviewSlider />
         </div>
     )
 }
