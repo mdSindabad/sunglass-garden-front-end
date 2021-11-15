@@ -25,7 +25,7 @@ import MyOrders from '../Dashboard/MyOrders/MyOrders';
 import Payment from '../Dashboard/Payment/Payment';
 import Review from '../Dashboard/Review/Review';
 import { Alert, CircularProgress } from '@mui/material';
-import ReviewDetails from '../ReviewDetails/ReviewDetails';
+import ReviewDetails from '../Dashboard/ReviewDetails/ReviewDetails';
 import User from '../../components/User/User';
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardMedia, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
@@ -15,6 +15,7 @@ const ReviewDetails = ({ orders }) => {
     const order = orders.filter(order => order._id === params.id)[0];
 
     // local state
+    const [message, setMessage] = useState('');
     const [value, setValue] = useState(3);
     const [hover, setHover] = useState(-1);
     const labels = {
@@ -30,6 +31,10 @@ const ReviewDetails = ({ orders }) => {
         5: 'Excellent+',
     };
 
+    const handleChange = (e) => {
+        setMessage(e.target.value);
+    };
+
     const submitReview = (id) => {
         const data = {
             product: order.product.name,
@@ -37,7 +42,8 @@ const ReviewDetails = ({ orders }) => {
             customer: order.customer.name,
             email: order.customer.email,
             customerImage: order.customer.image,
-            rating: value
+            rating: value,
+            message: message
         };
 
         axios.post(`https://whispering-gorge-61124.herokuapp.com/review`, data)
@@ -90,6 +96,16 @@ const ReviewDetails = ({ orders }) => {
                                     {value !== null && (
                                         <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
                                     )}
+                                </Typography>
+                                <Typography>
+                                    <TextField
+                                        id="outlined-multiline-flexible"
+                                        label="Message"
+                                        multiline
+                                        maxRows={4}
+                                        value={message}
+                                        onChange={handleChange}
+                                    />
                                 </Typography>
                                 <Box sx={{ mt: 2 }}>
                                     <Button variant='contained' color='primary' onClick={submitReview}>Submit Review</Button>
