@@ -1,0 +1,10 @@
+.footer {
+    background: #333;
+    color: #fff;
+    margin-top: 32px;
+    text-align: center;
+    padding: 10px 0;
+}
+.cursor {
+    cursor: pointer;
+}

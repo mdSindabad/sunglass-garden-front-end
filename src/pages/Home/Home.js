@@ -5,18 +5,19 @@ import Banner from '../../components/Banner/Banner';
 import Product from '../../components/Product/Product';
 import useProducts from '../../hooks/useProducts';
 import ReviewSlider from '../../components/ReviewSlider/ReviewSlider';
+import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
     // products context
     const { products, isLoading, error } = useProducts();
 
     return (
-        <div style={{ marginBottom: '20px' }}>
+        <div>
             {/* banner */}
             <Banner />
             {/* our products */}
             <Container sx={{ m: '0 auto 20px' }}>
-                <h1>Our Products</h1>
+                <h2 style={{ textAlign: 'center' }}>Our Products</h2>
                 {
                     isLoading ? <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <CircularProgress />
@@ -34,6 +35,7 @@ const Home = () => {
             </Container>
             {/* review */}
             <ReviewSlider />
+            <Footer />
         </div>
     )
 }

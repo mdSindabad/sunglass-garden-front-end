@@ -9,6 +9,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Rating } from '@mui/material';
 
 export default function ReviewCard({ review }) {
+
     return (
         <Box sx={{ minWidth: 275, m: '0 5px' }} style={{ textAlign: 'center' }}>
             <Card variant="contained">

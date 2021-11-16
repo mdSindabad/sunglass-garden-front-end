@@ -53,13 +53,14 @@ const useFirebase = () => {
     // observe users change
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
-            if (user) {
-                const data = {
-                    name: user.displayName || "",
-                    email: user.email,
-                    image: user.photoURL
-                }
-                axios.post("https://whispering-gorge-61124.herokuapp.com/user", data)
+            const userData = {
+                name: user?.displayName,
+                email: user?.email,
+                image: user?.photoURL
+            }
+            console.log(userData)
+            if (userData) {
+                axios.post("https://whispering-gorge-61124.herokuapp.com/user", userData)
                     .then(res => {
                         setUser(res.data)
                     })

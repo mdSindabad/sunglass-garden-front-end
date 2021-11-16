@@ -6,6 +6,7 @@ import UserDashboard from '../../UserDashboard/UserDashboard';
 const Dashboard = () => {
     // user context
     const { user } = useAuth();
+    console.log(user)
 
     return (
         <>

@@ -23,13 +23,14 @@ const Purchase = () => {
         name: user.name,
         email: user.email,
         address: '',
-        phone: ''
+        phone: '',
+        image: user.image
     });
 
     // place order function
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { name, email, address, phone } = values;
+        const { name, email, address, phone, image } = values;
         if (!name || !email || !address || !phone) {
             return
         } else {
@@ -38,7 +39,8 @@ const Purchase = () => {
                     name,
                     email,
                     address,
-                    phone
+                    phone,
+                    image
                 },
                 product
             };

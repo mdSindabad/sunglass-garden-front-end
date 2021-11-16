@@ -64,7 +64,7 @@ const ReviewSlider = () => {
                 </Box> :
                     <Slider {...settings}>
                         {
-                            reviews.map(review => (
+                            reviews?.map(review => (
                                 <ReviewCard review={review} />
                             ))
 
