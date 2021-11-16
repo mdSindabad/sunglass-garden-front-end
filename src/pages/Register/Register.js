@@ -51,7 +51,6 @@ const Register = () => {
             return
         } else {
             const res = registerWithEmail(name, email, password);
-            console.log(res);
         }
     };
 
