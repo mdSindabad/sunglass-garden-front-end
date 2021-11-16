@@ -13,6 +13,7 @@ const useFirebase = () => {
     // local state
     const [user, setUser] = useState({});
     const [isLoading, setIsloading] = useState(true);
+    const [update, setUpdate] = useState(false);
 
     // login using google
     const signInWithGoogle = () => {
@@ -24,7 +25,7 @@ const useFirebase = () => {
     const updateUserProfile = (name) => {
         updateProfile(auth.currentUser, { displayName: name })
             .then(() => {
-
+                setUpdate(true)
             })
             .catch(err => console.log(err));
     }
@@ -53,13 +54,13 @@ const useFirebase = () => {
     // observe users change
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
+            setUpdate(false)
             const userData = {
                 name: user?.displayName,
                 email: user?.email,
                 image: user?.photoURL
             }
-            console.log(userData)
-            if (userData) {
+            if (userData.name) {
                 axios.post("https://whispering-gorge-61124.herokuapp.com/user", userData)
                     .then(res => {
                         setUser(res.data)
@@ -76,7 +77,7 @@ const useFirebase = () => {
             }, 3000)
         });
         return () => unsubscribe
-    }, []);
+    }, [update]);
 
     return {
         user,

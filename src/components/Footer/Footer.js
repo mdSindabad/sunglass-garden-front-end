@@ -26,9 +26,9 @@ const Footer = () => {
                         <span>S</span>unglass<span>G</span>arden
                     </Typography>
                     <div>
-                        <p><MailOutlineIcon />info@sunglassgarden.com</p>
-                        <p><PhoneCallbackIcon />+880 742 3960</p>
-                        <p> <AddLocationAltIcon />112/B, Banani, Dhaka</p>
+                        <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><MailOutlineIcon />info@sunglassgarden.com</p>
+                        <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><PhoneCallbackIcon />+880 742 3960</p>
+                        <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}> <AddLocationAltIcon />112/B, Banani, Dhaka</p>
                     </div>
                 </div>
                 <p style={{ margin: '10px 0' }}>&copy; Copyright 2021, Sunglass Garden</p>
