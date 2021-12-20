@@ -11,7 +11,7 @@ https://sunglass-garden.web.app/
 
 ##Stack used
 1. React
-2. Bootstrap
+2. MaterialUI
 3. Firebase Auth
 4. NodeJs (Express server)
 5. MongoDB database
